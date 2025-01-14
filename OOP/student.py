@@ -3,12 +3,10 @@ class Student:
         self.name = name
         self.age = age
         self.grade = grade
-        
-def __str__(self):
-    return f"Student Name: {self.name}"
     
-new_Student = Student('Calum', 20, 'A')
+    def __str__(self):
+        return f"Student: {self.name}"
 
-print(new_Student)
-    
-    
+new_student = Student('Calum', 20, 'A')
+
+print(new_student.name)
