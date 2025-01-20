@@ -1,3 +1,4 @@
+from character import Enemy
 class Room:
     
     # constructor    
@@ -5,6 +6,7 @@ class Room:
         self.name = None
         self.description = None
         self.linked_rooms = {}
+        self.character = None
         
         
     # creating getter and setter
@@ -21,18 +23,26 @@ class Room:
         return self.name
     
     def set_name(self, room_name):
-        self.name = room_name  
+        self.name = room_name
         
     # linking rooms and navigating them
         
     def link_room(self, room_to_link, direction):
-        self.linked_room[direction] = room_to_link
+        self.linked_rooms[direction] = room_to_link
         
     def get_details(self):
         print(self.name)
         print("------------")
         print(self.description)
-        for direction in self.linked_room:
+        for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
-        print("The " + room.get_name()+ " is " + direction)
+        print(f"The {room.get_name()} is {direction}")
+        
+    # movement function
+    def move(self, direction):
+        if direction in self.linked_rooms:
+            return self.linked_rooms
+        else:
+            print("You cannot go to that direction")
+            return self
     

@@ -19,3 +19,18 @@ dining_hall.link_room(ballroom,"west")
 ballroom.link_room(dining_hall,"east")
 
 dining_hall.get_details()
+
+kitchen.link_room(dining_hall, "south")
+dining_hall.link_room(kitchen, "north")
+dining_hall.link_room(dining_hall, "east")
+ballroom.link_room(ballroom, "east")
+
+dave = Enemy()
+# !!!
+
+current_room = kitchen
+while True:
+    print("/n")
+    current_room.get_details()
+    command = input((">"))
+    current_room = current_room.move(command)
