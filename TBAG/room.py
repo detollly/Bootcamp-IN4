@@ -2,12 +2,11 @@ from character import Enemy
 class Room:
     
     # constructor    
-    def __init__(self):
-        self.name = None
+    def __init__(self, room_name):
+        self.name = room_name
         self.description = None
         self.linked_rooms = {}
-        self.character = None
-        
+        self.character = None        
         
     # creating getter and setter
     def get_description (self):
@@ -25,6 +24,12 @@ class Room:
     def set_name(self, room_name):
         self.name = room_name
         
+    def set_character(self, new_character):
+        self.character = new_character
+
+    def get_character(self):
+        return self.character
+        
     # linking rooms and navigating them
         
     def link_room(self, room_to_link, direction):
@@ -32,7 +37,7 @@ class Room:
         
     def get_details(self):
         print(self.name)
-        print("------------")
+        print("-------------------------")
         print(self.description)
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
@@ -40,8 +45,9 @@ class Room:
         
     # movement function
     def move(self, direction):
+        
         if direction in self.linked_rooms:
-            return self.linked_rooms
+            return self.linked_rooms[direction]
         else:
             print("You cannot go to that direction")
             return self

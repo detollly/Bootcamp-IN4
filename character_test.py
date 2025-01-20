@@ -1,6 +1,8 @@
-from character import Character, Enemy
+from character import Enemy
 
 dave = Enemy("Dave", "A smelly zombie")
+
+dave.describe()
 
 dave.set_conversation("Hello there!")
 dave.talk()
