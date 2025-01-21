@@ -14,3 +14,6 @@ class Item:
     
     def set_description(self, item_description):
         self.description = item_description
+        
+    def describe_item(self):
+        print(self.description)

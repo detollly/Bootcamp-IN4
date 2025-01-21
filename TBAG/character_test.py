@@ -9,6 +9,7 @@ dave.talk()
 dave.set_weakness("cheese")
 
 print("What will you fight with?")
-fight_with = input()
+fight_with = input("\n> ")
 dave.fight(fight_with)
+print(dave.name)
 

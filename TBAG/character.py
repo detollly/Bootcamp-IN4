@@ -1,3 +1,5 @@
+from item import *
+
 class Character:
     # Creating a character
     def __init__(self, char_name, char_description):
