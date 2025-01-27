@@ -44,6 +44,7 @@ class Library():
             print("{} did not borrow {}".format(member.name, book.title))
             
 # ----------------------
+# Adding examples
 
 # Create instances of Book
 book1 = Book("The Great Gatsby", "F. Scott Fitzgerald")
@@ -67,10 +68,10 @@ library.register_member(member1)
 library.register_member(member2)
 
 # Lend books to member
-library.lend_book(book1, member1)  # Output: The Great Gatsby is rented by Charlie
-library.lend_book(book2, member1)  # Output: Pride and Prejudice is rented by Charlie
-library.lend_book(book3, member2)  # Output: The Catcher in the Rye is rented by Daisy
+library.lend_book(book1, member1)  
+library.lend_book(book2, member1)  
+library.lend_book(book3, member2)  
 
 # Return books
-library.return_book(book1, member1)  # Output: The Great Gatsby has been returned by Charlie
-library.return_book(book3, member2)  # Output: The Catcher in the Rye has been returned by Daisy
+library.return_book(book1, member1)  
+library.return_book(book3, member2)  
