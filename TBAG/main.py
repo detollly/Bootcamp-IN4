@@ -1,6 +1,7 @@
 from room import Room
 from character import Enemy
 dead = False
+
 kitchen = Room("Kitchen")
 kitchen.set_description("A dank and dirty room, buzzing with flies")
 
@@ -19,24 +20,24 @@ ballroom.link_room(dining_hall, "east")
 dave = Enemy("Dave", "A smelly zombie")
 dining_hall.set_character(dave)
 
-dave.set_conversation("Hi my name is Dave, Id like to eat your brain.")
+dave.describe()
+
+dave.set_conversation("Hi, my name is Dave. I'd like to eat your brain.")
 dave.set_weakness("cheese")
-dave.set_inventory("cheese")
-dave.steal("cheese")
-print("What will fight with?")
+dave.add_item("cheese")  # Adding item to enemy inventory
+
+print("What will you fight with?")
 fight_with = input("\n> ")
-dave.fight(fight_with)
 
-
-current_room = kitchen
 while dead == False:
+    current_room = kitchen
     print("\n")
     current_room.get_details()
     inhabitant = current_room.get_character()
     if inhabitant is not None:
         inhabitant.describe()
     print("Which direction would you like to go? North, east, south, west")
-    command = input("\n> ")
+    command = input("\n> ").lower()  # Normalize input to lowercase
     if command in ["north", "south", "east", "west"]:
         current_room = current_room.move(command)
     elif command == "talk":
@@ -48,12 +49,10 @@ while dead == False:
             print("What will you fight with?")
             fight_with = input()
             if inhabitant.fight(fight_with) == True:
-                # What happens if you win?
                 print("Hooray, you won the fight!")
                 current_room.set_character(None)
             else:
-                # What happens if you lose?
                 print("Oh dear, you lost the fight.")
-                dead = True
+                dead = True  # End the game if you lose the fight
         else:
             print("There is no one here to fight with")
